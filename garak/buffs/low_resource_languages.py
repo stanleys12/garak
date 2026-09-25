@@ -64,6 +64,5 @@ class LRLBuff(Buff):
             translated_outputs.append(
                 garak.attempt.Message(translated_output, lang="en")
             )
-        # does this work as expected? Setting outputs would _add_ a new turn not replace the originals
-        attempt.outputs = translated_outputs
+        attempt._replace_last_turn("assistant", translated_outputs)
         return attempt
